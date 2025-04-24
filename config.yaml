@@ -1,0 +1,48 @@
+models:
+  genaz: "stabilityai/stable-diffusion-3.5-large"
+  s1_5: "microsoft/phi-4"
+  s2_0: "llama3-8b-8192"
+  s3_0: "deepseek-r1-distill-llama-70b"
+  available:
+    - "genaz"
+    - "s1_5"
+    - "s2_0"
+    - "s3_0"
+storage:
+  temp_dir: "temp"
+  cache_dir: "cache"
+  max_cache_size_gb: 5  # Limit cache size to 5GB
+  cleanup_threshold: 0.9  # Clean up when 90% full
+optimization:
+  use_gpu: true
+  half_precision: true  # Use FP16 for faster inference
+  batch_size: 1
+  num_workers: 4  # For data loading
+  compile_model: false  # PyTorch 2.0+ compilation (experimental)
+  vae_slicing: true  # For memory efficiency
+test_mode: false
+server:
+  host: "0.0.0.0"
+  port: 8000
+  max_queue_size: 10
+  timeout: 60
+generation:
+  default_width: 1024
+  default_height: 1024
+  default_steps: 30
+  default_guidance_scale: 7.5
+  default_negative_prompt: "low quality, blurry, distorted"
+s2_0:
+  temperature: 0.7  # Lower temperature for more precise coding responses
+  max_tokens: 4096  # Increased token limit for detailed code explanations
+  top_p: 0.95
+  code_formatting: true
+  code_analysis: true
+  debugging_assistance: true
+s3_0:
+  temperature: 0.6  # Balanced temperature for creativity and accuracy
+  max_tokens: 4096  # Increased token limit for detailed explanations
+  top_p: 0.95
+  chart_generation: true
+  reasoning_enhancement: true
+  conversation_focus: true
