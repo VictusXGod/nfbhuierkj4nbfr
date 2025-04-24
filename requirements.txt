@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+huggingface_hub
+pillow
+torch
+numpy
+matplotlib
+pandas
+requests
+pyyaml
